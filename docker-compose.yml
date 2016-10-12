@@ -1,0 +1,20 @@
+version: '2'
+services:
+  nginx:
+    container_name: showdoc-nginx
+    build: nginx/Dockerfile
+    image: showdoc-nginx
+    command: nginx -g 'daemon off;'
+    depends_on:
+      - php
+    ports:
+      - "8080:80"
+    links:
+      - php
+  php:
+    container_name: showdoc-php
+    build: php/Dockerfile
+    image: showdoc-php
+    command: apache2-foreground
+    volumes:
+      - ./data:/var/www/html/Sqlite
