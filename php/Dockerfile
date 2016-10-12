@@ -9,5 +9,5 @@ RUN apt-get update && apt-get install -y\
     && docker-php-ext-install -j$(nproc) gd
 COPY src/ /var/www/html
 COPY php.ini /usr/local/etc/php
-RUN cd /var/www/html && chown -R www-data:www-data *
 VOLUME /var/www/html/Sqlites
+RUN cd /var/www/html && chown -R www-data:www-data *
